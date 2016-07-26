@@ -6,6 +6,10 @@ Version:
 07/22:
     1: only consider the Beijing housing at this time
     2: consider different area in Beijing, like HaiDian, ChaoYang, etc
+
+07/23:
+    1: add the configurations for area and web mapping for different cities in china,
+
 '''
 import requests
 from bs4 import BeautifulSoup
@@ -14,15 +18,13 @@ from collections import defaultdict
 import traceback
 
 # Beijing area map for different url in lianjia website
-BEIJING_AREA_MAP = {u'ChaoYang':u'chaoyang',u'ChangPing':u'changping',u'DongCheng':u'dongcheng',
-                u'DaXing':u'daxing',u'FangShan':u'fangshan',u'FengTai':u'fengtai',
-                u'HaiDian':u'haidian',u'HuaiRou':u'huairou'}
+from lianjia_confg import LIANJIA_MAP
 
 class LianJiaCrawler(object):
     '''
     crawling the housing price for different areas in china
     '''
-    def __init__(self,url):
+    def __init__(self,url,area_map):
         '''
 
         :param url: the root website: 'http://bj.fang.lianjia.com'
@@ -39,7 +41,9 @@ class LianJiaCrawler(object):
         self._url = url + '/loupan' #the price information is with this suffix
         self._url_dict = defaultdict(list)
         self._html_dict = defaultdict(list)
-        self._price_dict = defaultdict(list)
+        self._price_dict = {}
+
+        self._area_map = area_map
 
 
     def _generate_url_dict(self):
@@ -48,7 +52,7 @@ class LianJiaCrawler(object):
         parse all the
         :return:
         '''
-        for area,url_name in BEIJING_AREA_MAP.items():
+        for area,url_name in self._area_map.items():
             try:
                 url_root_area = self._url + '/' + url_name #root url for this area
                 response = requests.get(url_root_area)
@@ -70,6 +74,7 @@ class LianJiaCrawler(object):
                 #append the url
                 for page_index in range(1,page_num+1):
                     self._url_dict[area].append(url_root_area + '/pg{}'.format(page_index))
+
 
     def _get_html_dict(self):
         '''
@@ -105,27 +110,74 @@ class LianJiaCrawler(object):
             2: I only consider the average price here, thus the price calculated is based on
                 average, eg, 20000 RMB/m^2
         '''
+        # generate the url and html first
+        self._generate_url_dict()
+        self._get_html_dict()
+
         for area,html_list in self._html_dict.items():
             total_price = 0
             succ_count = 0
 
             #get the price in the html,
             for html in html_list:
-                pass
+                count_tmp,price_tmp = self._cal_average_price_from_html(html)
+                succ_count += count_tmp
+                total_price += price_tmp
 
             if succ_count == 0:
                 # log
                 pass
             else:
-                self._price_dict[area].append(total_price*1.0/succ_count)
+                average_price = round(total_price*1.0/succ_count,0)
+                self._price_dict[area] = average_price
 
+
+    def _cal_average_price_from_html(self,html):
+        '''
+        parse the html and return the count and price for this html
+        :param html:
+        :return:
+            succ_count: the succ count for the price for this html
+            total_price: total price for the counts for this html
+        '''
+        soup = BeautifulSoup(html, 'lxml')
+
+        div_list = soup.find_all('div',class_='col-2')
+        succ_count = 0
+        total_price = 0
+        for index in range(len(div_list)):
+            # print div_list[index].text.replace('\n','')
+            each_line = div_list[index].text.replace('\n', '')
+            each_line_no_space = re.sub('\s*','',each_line)
+            # print each_line_no_space
+            # print each_line_no_space[:3]
+
+            # print each_line_no_space[:2]
+            # print each_line_no_space[:2] == u'场均'
+            if each_line_no_space[:2] == u'均价':
+                succ_count += 1
+                # extract the price for every line and add them to the total price
+                price = re.findall('\d+',each_line_no_space)
+                total_price += float(price[0])
+        return succ_count,total_price
 
 
 if __name__ == '__main__':
-    lianjia_root_site = 'http://bj.fang.lianjia.com'
-    lianjia = LianJiaCrawler(lianjia_root_site)
+    # lianjia_root_site = 'http://bj.fang.lianjia.com'
+    # lianjia = LianJiaCrawler(lianjia_root_site)
+    #
+    # lianjia._generate_url_dict()
+    # lianjia._get_html_dict()
+    # lianjia.get_price_dict()
 
-    lianjia._generate_url_dict()
-    lianjia._get_html_dict()
+    #debug code
     # print lianjia._url_dict
-    print lianjia._html_dict
+    # print lianjia._html_dict
+    # print lianjia._html_dict[u'HuaiRou'][0]
+    # lianjia._cal_average_price_from_html(lianjia._html_dict[u'HuaiRou'][0])
+    # print lianjia._price_dict
+
+    for city,confg in LIANJIA_MAP.items():
+        lianjia = LianJiaCrawler(confg['website'],confg['area_map'])
+        lianjia.get_price_dict()
+        print lianjia._price_dict
