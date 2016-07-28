@@ -9,7 +9,6 @@ Version:
 
 07/23:
     1: add the configurations for area and web mapping for different cities in china,
-
 '''
 import requests
 from bs4 import BeautifulSoup
@@ -177,6 +176,7 @@ if __name__ == '__main__':
     # lianjia._cal_average_price_from_html(lianjia._html_dict[u'HuaiRou'][0])
     # print lianjia._price_dict
 
+    import uniout
     for city,confg in LIANJIA_MAP.items():
         lianjia = LianJiaCrawler(confg['website'],confg['area_map'])
         lianjia.get_price_dict()
