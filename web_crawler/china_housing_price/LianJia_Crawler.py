@@ -15,9 +15,16 @@ from bs4 import BeautifulSoup
 import re
 from collections import defaultdict
 import traceback
+import logging
+# functions from util package
+from utils.path_util import PROJECT_DIR
+from utils.log_util import log_format
 
 # Beijing area map for different url in lianjia website
 from lianjia_confg import LIANJIA_MAP
+
+# set the format for the log
+log_format(PROJECT_DIR + '/logs/crawler')
 
 class LianJiaCrawler(object):
     '''
@@ -44,11 +51,12 @@ class LianJiaCrawler(object):
 
         self._area_map = area_map
 
+        self.logger = logging.getLogger(type(self).__name__)
 
     def _generate_url_dict(self):
         '''
         generate urls for different area, store them into the _url_dict,
-        parse all the
+        parse all
         :return:
         '''
         for area,url_name in self._area_map.items():
@@ -56,7 +64,8 @@ class LianJiaCrawler(object):
                 url_root_area = self._url + '/' + url_name #root url for this area
                 response = requests.get(url_root_area)
             except Exception as e:
-                print traceback.print_exc()
+                self.logger.exception(e)
+                # print traceback.print_exc()
 
             if response.status_code != 200:
                 # log the info
@@ -91,7 +100,8 @@ class LianJiaCrawler(object):
                     response = requests.get(url)
                 except Exception as e:
                     #log
-                    print traceback.print_exc()
+                    # print traceback.print_exc()
+                    self.logger.exception(e)
                 if response.status_code == 200:
                     self._html_dict[area].append(response.text)
                 else:
@@ -164,10 +174,7 @@ class LianJiaCrawler(object):
 if __name__ == '__main__':
     # lianjia_root_site = 'http://bj.fang.lianjia.com'
     # lianjia = LianJiaCrawler(lianjia_root_site)
-    #
-    # lianjia._generate_url_dict()
-    # lianjia._get_html_dict()
-    # lianjia.get_price_dict()
+
 
     #debug code
     # print lianjia._url_dict
@@ -181,3 +188,7 @@ if __name__ == '__main__':
         lianjia = LianJiaCrawler(confg['website'],confg['area_map'])
         lianjia.get_price_dict()
         print lianjia._price_dict
+
+    # print PROJECT_DIR
+
+
