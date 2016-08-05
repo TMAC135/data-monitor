@@ -9,6 +9,9 @@ Version:
 
 07/23:
     1: add the configurations for area and web mapping for different cities in china,
+
+08/03:
+    1: add the log
 '''
 import requests
 from bs4 import BeautifulSoup
