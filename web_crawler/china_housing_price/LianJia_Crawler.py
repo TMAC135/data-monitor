@@ -20,6 +20,8 @@ import logging
 from utils.path_util import PROJECT_DIR
 from utils.log_util import log_format
 
+
+
 # Beijing area map for different url in lianjia website
 from lianjia_confg import LIANJIA_MAP
 
