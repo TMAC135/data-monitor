@@ -32,3 +32,5 @@ raw data from previous step
   - **notebooks**: ipython notebooks for data analysis.
   - **logs**: log files.
   - **server.py**: The entrance of the project.
+
+### Notice 
