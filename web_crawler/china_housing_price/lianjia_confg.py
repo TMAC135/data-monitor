@@ -7,23 +7,190 @@ This is the city - area mapping in lianjia website
 '''
 
 # differnet area map for different url in lianjia website
-BEIJING_AREA_MAP = {u'朝阳':u'chaoyang',u'昌平':u'changping',u'东城':u'dongcheng',
-                u'大兴':u'daxing',u'房山':u'fangshan',u'丰台':u'fengtai',
-                u'海淀':u'haidian',u'怀柔':u'huairou',u'门头沟':u'mentougou',
-                u'密云':u'miyun',u'平谷':u'pinggu',u'石景山':u'shijingshan',
-                u'顺义': u'shunyi',u'通州':u'tongzhou',u'西城':u'xicheng',
-                u'延庆':u'yanqing',u'亦庄开发区':u'yizhuangkaifaqu',u'燕郊':u'yanjiao',
-                u'安次':u'anci',u'广阳':u'guangyang'
-                    }
+BEIJING_AREA_MAP = \
+    {
+        u'朝阳':u'chaoyang',u'昌平':u'changping',u'东城':u'dongcheng',
+        u'大兴':u'daxing',u'房山':u'fangshan',u'丰台':u'fengtai',
+        u'海淀':u'haidian',u'怀柔':u'huairou',u'门头沟':u'mentougou',
+        u'密云':u'miyun',u'平谷':u'pinggu',u'石景山':u'shijingshan',
+        u'顺义': u'shunyi',u'通州':u'tongzhou',u'西城':u'xicheng',
+        u'延庆':u'yanqing',u'亦庄开发区':u'yizhuangkaifaqu',u'燕郊':u'yanjiao',
+        u'安次':u'anci',u'广阳':u'guangyang'
+    }
+CHENGDU_AREA_MAP = \
+    {
+        u'锦江':u'jinjiang',u'青羊':u'qingyang',u'金牛':u'jinniu',u'武侯':u'wuhou',
+        u'成华':u'chenghua',u'龙泉驿':u'longquanyi',u'青白江':u'qingbaijiang',
+        u'新都':u'xindou',u'温江':u'wenjiang',u'金堂':u'jintang',u'双流':u'shuangliu',
+        u'郫县':u'pixian',u'大邑':u'dayi',u'蒲江':u'pujiang',u'新津':u'xinjin',
+        u'都江堰':u'doujiangyan',u'彭州':u'pengzhou',u'邛崃':u'qionglai',
+        u'崇州':u'chongzhou1',u'高新':u'gaoxin7',u'天府新区':u'tianfuxinqu',
+        u'彭山':u'pengshan'
+    }
+CHONGQING_AREA_MAP=\
+    {
+        u'万州':u'wanzhou',u'涪陵':u'fuling',u'万盛':u'wansheng',u'双桥':u'shuangqiao1',
+        u'黔江':u'qianjiang',u'长寿':u'changshou1',u'江津':u'jiangjing',u'璧山':u'bishan',
+        u'綦江':u'qijiang',u'南川':u'nanchuang',u'合川':u'hechuang',u'铜梁':u'tongliang',
+        u'梁平':u'liangping',u'潼南':u'tongnan',u'云阳':u'yunyang',u'大足':u'dazu',
+        u'武隆县':u'wulongxian',u'石柱':u'shizhu',u'高新':u'gaoxin2',u'渝中':u'yuzhong',
+        u'江北':u'jiangbei',u'南岸':u'nanan',u'大渡口':u'dadukou',u'九龙坡':u'jiulongpo',
+        u'沙坪坝':u'shapingba',u'巴南':u'banan',u'北碚':u'beibei',u'渝北':u'yubei',
+        u'永川':u'yongchuan',u'丰都':u'fengdu1',
+    }
+CHANGSHA_AREA_MAP=\
+    {
+        u'望城':u'wangcheng',u'宁乡':u'ningxiang',u'浏阳':u'liuyang',u'雨花':u'yuhua',
+        u'天心':u'tianxin',u'岳麓':u'yuelu',u'芙蓉':u'furong',u'开福':u'kaifu',u'长沙县':u'changshaxian',
+    }
+DALIAN_AREA_MAP=\
+    {
+        u'中山':u'zhongshan',u'西岗':u'xigang',u'沙河口':u'shahekou',u'甘井子':u'ganjingzi',
+        u'旅顺口':u'lvshunkou',u'金州':u'jinzhou',u'长海':u'changhai',u'瓦房店':u'wafangdian',
+        u'普兰店':u'pulandian',u'庄河':u'zhuanghe',u'高新园区':u'gaoxinyuanqu',u'开发区':u'kaifaqudl',
 
+    }
+DONGGUAN_AREA_MAP=\
+    {
+        u'中堂':u'zhongtang',u'企石':u'qishi',u'凤岗':u'fenggang',u'南城':u'nancheng',
+        u'厚街':u'houjie',u'塘厦':u'tangxia',u'大岭山':u'dalingshan',u'大朗':u'dalang',
+        u'寮步':u'liaobu',u'常平':u'changping',u'望牛墩':u'wangniudun',u'松山湖':u'songshanhu',
+        u'桥头':u'qiaotou',u'樟木头':u'zhangmutou',u'横沥':u'hengli',u'沙田':u'shatian',
+        u'洪梅':u'hongmei',u'清溪':u'qingxi',u'石排':u'shipai',u'石碣':u'shijie',
+        u'石龙':u'shilong',u'茶山':u'chashan',u'莞城':u'guancheng',u'虎门':u'humen',
+        u'道滘':u'daojiao',u'长安':u'changan',u'高埗':u'gaobu',u'麻涌':u'mayong',
+        u'黄江':u'huangjiang',u'其他':u'qita',
+    }
+FOUSHAN_AREA_MAP=\
+    {
+        u'三水':u'sanshui',u'南海':u'nanhai',u'禅城':u'chancheng',u'顺德':u'shunde',
+        u'高明':u'gaoming',u'其他':u'qita',
+    }
+GUANGZHOU_AREA_MAP=\
+    {
+        u'从化':u'conghua',u'佛冈':u'fogang',u'佛山':u'foshan',u'南沙':u'nansha',
+        u'南海':u'nanhai',u'增城':u'zengcheng',u'天河':u'tianhe',u'海珠':u'haizhu',
+        u'清远':u'qingyuan',u'番禺':u'panyu',u'白云':u'baiyun',u'花都':u'huadu',
+        u'荔湾':u'liwan',u'越秀':u'yuexiu',u'顺德':u'shunde',u'黄埔':u'huangpu',u'其他':u'qita',
+    }
+HANGZHOU_AREA_MAP=\
+    {
+        u'上城':u'shangcheng',u'下城':u'xiacheng',u'江干':u'jianggan',u'拱墅':u'gongshu',
+        u'西湖':u'xihu',u'滨江':u'binjiang',u'萧山':u'xiaoshan',u'余杭':u'yuhang',
+        u'桐庐':u'tonglu1',u'淳安':u'chunan1',u'建德':u'jiande',u'富阳':u'fuyang',
+        u'临安':u'linan',u'海宁市':u'hainingshi',
+    }
+HUIZHOU_AREA_MAP=\
+    {
+        u'仲恺':u'zhongkai',u'博罗':u'boluo',u'大亚湾':u'dayawan',u'惠东':u'huidong',
+        u'惠城':u'huicheng',u'惠阳':u'huiyang',u'龙门':u'longmen',
+    }
+HAIKOU_AREA_MAP=\
+    {
+        u'海口市':u'haikoushi',
+    }
+JINAN_AREA_MAP=\
+    {
+        u'历下':u'lixia',u'市中':u'shizhong',u'槐荫':u'huaiyin',u'天桥':u'tianqiao',u'历城':u'licheng',
+        u'长清':u'changqing',u'章丘':u'zhangqiu1',u'高新':u'gaoxin',u'济阳':u'jiyang',u'商河':u'shanghe',
+    }
+JIAXIN_AREA_MAP=\
+    {
+        u'中心城区':u'zhongxinchengqu',u'南湖新区':u'nanhuxinqu',u'嘉善':u'jiashan',u'国际商务区':u'guojishangwuqu',
+        u'大麻镇':u'damazhen',u'平湖':u'pinghu',u'广陈镇':u'guangchenzhen',u'桐乡':u'tongxiang',u'海盐':u'haiyan',
+        u'秀洲新区':u'xiuzhouxinqu',u'经济开发区':u'jingjikaifaqu',u'运河新区':u'yunhexinqu',
+    }
+LinXIN_AREA_MAP=\
+    {
+        u'临沭县':u'linshuxian',u'兰山区':u'lanshanqu',u'北城新区':u'beichengxinqu',u'沂南县':u'yinanxian',
+        u'沂水县':u'yishuixian',u'河东区':u'hedongqu',u'经济开发区':u'jingjikaifaqu',u'罗庄区':u'luozhuangqu',
+        u'苍山县':u'cangshanxian',u'蒙阴县':u'mengyinxian',u'费县':u'feixian',u'郯城县':u'tanchengxian',
+        u'高新区':u'gaoxinqu',
+    }
+
+# LianJia map for different cities and websites
 LIANJIA_MAP = \
 {
-    u'Beijing':{
+    u'Beijing':
+        {
             u'website':u'http://bj.fang.lianjia.com',
             u'area_map':BEIJING_AREA_MAP
-                }
+        },
+    u'Chengdu':
+        {
+            u'website':u'http://cd.fang.lianjia.com/',
+            u'area_map':CHENGDU_AREA_MAP
+        },
+    u'Chongqing':
+        {
+            u'website':u'http://cq.fang.lianjia.com/',
+            u'area_map':CHONGQING_AREA_MAP
+        },
+    u'Changsha':
+        {
+            u'website': u'http://cs.fang.lianjia.com/',
+            u'area_map': CHANGSHA_AREA_MAP
+        },
+    u'Dalian':
+        {
+            u'website': u'http://dl.fang.lianjia.com/',
+            u'area_map': DALIAN_AREA_MAP
+        },
+    u'Dongguan':
+        {
+            u'website': u'http://dg.fang.lianjia.com/',
+            u'area_map': DONGGUAN_AREA_MAP
+        },
+    u'Foushan':
+        {
+            u'website': u'http://fs.fang.lianjia.com/',
+            u'area_map': FOUSHAN_AREA_MAP
+        },
+    u'Guangzhou':
+        {
+            u'website': u'http://gz.fang.lianjia.com/',
+            u'area_map': GUANGZHOU_AREA_MAP
+        },
+    u'Hangzhou':
+        {
+            u'website': u'http://hz.fang.lianjia.com/',
+            u'area_map': HANGZHOU_AREA_MAP
+        },
+    u'Huizhou':
+        {
+            u'website': u'http://hui.fang.lianjia.com/',
+            u'area_map': HUIZHOU_AREA_MAP
+        },
+    u'Haikou':
+        {
+            u'website': u'http://hk.fang.lianjia.com/',
+            u'area_map': HAIKOU_AREA_MAP
+        },
+    u'Jinan':
+        {
+            u'website': u'http://jn.fang.lianjia.com/',
+            u'area_map': JINAN_AREA_MAP
+        },
+    u'Jiaxin':
+        {
+            u'website': u'http://jx.fang.lianjia.com/',
+            u'area_map': JIAXIN_AREA_MAP
+        },
+    u'Linxin':
+        {
+            u'website': u'http://lin.fang.lianjia.com/',
+            u'area_map': LinXIN_AREA_MAP
+        },
 }
 
 
 if __name__ == '__main__':
-    pass
+    from utils.path_util import PROJECT_DIR
+
+    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/test.json'
+    import json
+    import uniout
+
+    with open(json_out_path,'r') as f:
+        json_dict = json.load(f)
+        print json_dict

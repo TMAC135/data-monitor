@@ -1,4 +1,4 @@
-#-*- coding=utf-8 -*-
+# -*- coding=utf-8 -*-
 '''
 Author: TianRan
 Date: 7/22/16
@@ -17,13 +17,12 @@ import requests
 from bs4 import BeautifulSoup
 import re
 from collections import defaultdict
-import traceback
 import logging
+import json
+
 # functions from util package
 from utils.path_util import PROJECT_DIR
 from utils.log_util import log_format
-
-
 
 # Beijing area map for different url in lianjia website
 from lianjia_confg import LIANJIA_MAP
@@ -31,11 +30,13 @@ from lianjia_confg import LIANJIA_MAP
 # set the format for the log
 log_format(PROJECT_DIR + '/logs/crawler')
 
+
 class LianJiaCrawler(object):
     '''
     crawling the housing price for different areas in china
     '''
-    def __init__(self,url,area_map):
+
+    def __init__(self, url, area_map):
         '''
 
         :param url: the root website: 'http://bj.fang.lianjia.com'
@@ -49,7 +50,7 @@ class LianJiaCrawler(object):
                        value is list of url in this area
 
         '''
-        self._url = url + '/loupan' #the price information is with this suffix
+        self._url = url + '/loupan'  # the price information is with this suffix
         self._url_dict = defaultdict(list)
         self._html_dict = defaultdict(list)
         self._price_dict = {}
@@ -64,30 +65,31 @@ class LianJiaCrawler(object):
         parse all
         :return:
         '''
-        for area,url_name in self._area_map.items():
+        for area, url_name in self._area_map.items():
             try:
-                url_root_area = self._url + '/' + url_name #root url for this area
+                url_root_area = self._url + '/' + url_name  # root url for this area
                 response = requests.get(url_root_area)
             except Exception as e:
                 self.logger.exception(e)
-                # print traceback.print_exc()
 
             if response.status_code != 200:
                 # log the info
                 pass
             else:
-                soup = BeautifulSoup(response.text,'lxml')
+                soup = BeautifulSoup(response.text, 'lxml')
                 # get the number of pages for this area
 
                 # print soup.find('div',class_='page-box house-lst-page-box')
-                page_block = soup.find('div',class_='page-box house-lst-page-box')
-                dict_tmp = eval(page_block['page-data'])
-                page_num = dict_tmp['totalPage']
+                page_block = soup.find('div', class_='page-box house-lst-page-box')
+                if page_block is None:
+                    continue
+                else:
+                    dict_tmp = eval(page_block.get('page-data', ''))
+                    page_num = dict_tmp.get('totalPage', 0)
 
-                #append the url
-                for page_index in range(1,page_num+1):
+                # append the url
+                for page_index in range(1, page_num + 1):
                     self._url_dict[area].append(url_root_area + '/pg{}'.format(page_index))
-
 
     def _get_html_dict(self):
         '''
@@ -97,22 +99,21 @@ class LianJiaCrawler(object):
         :notice:
             call _generate_url_dict() first before this function
         '''
-        for area,url_list in self._url_dict.items():
+        for area, url_list in self._url_dict.items():
             if len(url_list) == 0:
                 raise ValueError('please generate url dict first')
             for url in url_list:
                 try:
                     response = requests.get(url)
                 except Exception as e:
-                    #log
+                    # log
                     # print traceback.print_exc()
                     self.logger.exception(e)
                 if response.status_code == 200:
                     self._html_dict[area].append(response.text)
                 else:
-                    #log
+                    # log
                     pass
-
 
     def get_price_dict(self):
         '''
@@ -128,13 +129,13 @@ class LianJiaCrawler(object):
         self._generate_url_dict()
         self._get_html_dict()
 
-        for area,html_list in self._html_dict.items():
+        for area, html_list in self._html_dict.items():
             total_price = 0
             succ_count = 0
 
-            #get the price in the html,
+            # get the price in the html,
             for html in html_list:
-                count_tmp,price_tmp = self._cal_average_price_from_html(html)
+                count_tmp, price_tmp = self._cal_average_price_from_html(html)
                 succ_count += count_tmp
                 total_price += price_tmp
 
@@ -142,11 +143,10 @@ class LianJiaCrawler(object):
                 # log
                 pass
             else:
-                average_price = round(total_price*1.0/succ_count,0)
+                average_price = round(total_price * 1.0 / succ_count, 0)
                 self._price_dict[area] = average_price
 
-
-    def _cal_average_price_from_html(self,html):
+    def _cal_average_price_from_html(self, html):
         '''
         parse the html and return the count and price for this html
         :param html:
@@ -156,13 +156,13 @@ class LianJiaCrawler(object):
         '''
         soup = BeautifulSoup(html, 'lxml')
 
-        div_list = soup.find_all('div',class_='col-2')
+        div_list = soup.find_all('div', class_='col-2')
         succ_count = 0
         total_price = 0
         for index in range(len(div_list)):
             # print div_list[index].text.replace('\n','')
             each_line = div_list[index].text.replace('\n', '')
-            each_line_no_space = re.sub('\s*','',each_line)
+            each_line_no_space = re.sub('\s*', '', each_line)
             # print each_line_no_space
             # print each_line_no_space[:3]
 
@@ -171,9 +171,9 @@ class LianJiaCrawler(object):
             if each_line_no_space[:2] == u'均价':
                 succ_count += 1
                 # extract the price for every line and add them to the total price
-                price = re.findall('\d+',each_line_no_space)
+                price = re.findall('\d+', each_line_no_space)
                 total_price += float(price[0])
-        return succ_count,total_price
+        return succ_count, total_price
 
 
 if __name__ == '__main__':
@@ -181,7 +181,7 @@ if __name__ == '__main__':
     # lianjia = LianJiaCrawler(lianjia_root_site)
 
 
-    #debug code
+    # debug code
     # print lianjia._url_dict
     # print lianjia._html_dict
     # print lianjia._html_dict[u'HuaiRou'][0]
@@ -189,11 +189,20 @@ if __name__ == '__main__':
     # print lianjia._price_dict
 
     import uniout
-    for city,confg in LIANJIA_MAP.items():
-        lianjia = LianJiaCrawler(confg['website'],confg['area_map'])
+    json_out_path = PROJECT_DIR + '/data/json/crawler/housng/test.json'
+    json_dict = {}
+    for city, confg in LIANJIA_MAP.items():
+        lianjia = LianJiaCrawler(confg['website'], confg['area_map'])
         lianjia.get_price_dict()
-        print lianjia._price_dict
+        # print lianjia._price_dict
+        json_dict[city] = lianjia._price_dict
 
-    # print PROJECT_DIR
+
+     # save the price to the json file
+    with open(json_out_path, 'w') as f:
+        json.dump(json_dict,f)
+
+
+
 
 
