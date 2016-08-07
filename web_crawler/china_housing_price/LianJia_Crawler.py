@@ -188,8 +188,9 @@ if __name__ == '__main__':
     # lianjia._cal_average_price_from_html(lianjia._html_dict[u'HuaiRou'][0])
     # print lianjia._price_dict
 
-    import uniout
-    json_out_path = PROJECT_DIR + '/data/json/crawler/housng/test.json'
+    from datetime import date
+    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_lianjia_housing.json'.format(str(date.today()))
+
     json_dict = {}
     for city, confg in LIANJIA_MAP.items():
         lianjia = LianJiaCrawler(confg['website'], confg['area_map'])

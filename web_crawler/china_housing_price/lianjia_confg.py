@@ -187,7 +187,7 @@ LIANJIA_MAP = \
 if __name__ == '__main__':
     from utils.path_util import PROJECT_DIR
 
-    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/test.json'
+    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/2016-08-07_lianjia_housing.json'
     import json
     import uniout
 
