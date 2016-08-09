@@ -204,6 +204,65 @@ WEIFANG_AREA_MAP=\
         u'潍城':u'weicheng',u'经济开发区':u'jingjikaifaqu',u'诸城市':u'zhuchengshi',
         u'青州市':u'qingzhoushi',u'高密市':u'gaomishi',u'高新技术开发区':u'gaoxinjishukaifaqu',
     }
+WEIZHOU_AREA_MAP=\
+    {
+        u'乐清市':u'yueqingshi',u'平阳县':u'pingyangxian',u'文成县':u'wenchengxian',
+        u'永嘉县':u'yongjiaxian',u'泰顺县':u'taishunxian',u'洞头县':u'dongtouxian',
+        u'瑞安市':u'ruianshi',u'瓯海':u'ouhai',u'苍南县':u'cangnanxian',u'鹿城':u'lucheng',
+        u'龙湾':u'longwan',
+    }
+XIAN_AREA_MAP=\
+    {
+        u'高陵':u'gaoling1',u'西咸':u'xixian',u'城内':u'chengnei',u'经开':u'jingkai',
+        u'城南':u'chengnan',u'城北':u'chengbei',u'浐灞':u'chanba',u'城东':u'chengdong',
+        u'临潼':u'lintong',u'阎良':u'yanliang',u'长安':u'changan1',u'曲江':u'qujiang',
+        u'城西':u'chengxi',u'高新':u'gaoxin4',u'蓝田':u'lantian',u'户县':u'huxian',
+        u'周至':u'zhouzhi',u'渭南':u'weinan',
+    }
+XIAMEN_AREA_MAP=\
+    {
+        u'云霄县':u'yunxiaoxian',u'同安':u'tongan',u'思明':u'siming',u'海沧':u'haicang',
+        u'湖里':u'huli',u'漳州':u'zhangzhou',u'翔安':u'xiangan',u'集美':u'jimei',
+        u'其他':u'qita',
+    }
+XUZHOU_AREA_MAP=\
+    {
+        u'丰县':u'fengxian',u'云龙区':u'yunlongqu',u'新城区':u'xinchengqu',u'新沂市':u'xinyishi',
+        u'梁寨镇':u'liangzhaizhen',u'沛县':u'peixian',u'泉山区':u'quanshanqu',
+        u'睢宁县':u'suiningxian',u'贾汪区':u'jiawangqu',u'邳州市':u'pizhoushi',
+        u'金山桥开发区':u'jinshanqiaokaifaqu',u'铜山区':u'tongshanqu',
+        u'鼓楼区':u'gulouqu',
+    }
+YANTAI_AREA_MAP=\
+    {
+        u'招远市':u'zhaoyuanshi',u'栖霞':u'xixia',u'海阳':u'haiyang',u'牟平':u'muping',
+        u'福山':u'fushan',u'芝罘':u'zhifu',u'莱山':u'laishan',u'莱州市':u'laizhoushi',
+        u'莱阳市':u'laiyangshi',u'蓬莱':u'penglai',u'长岛县':u'changdaoxian',u'高新区':u'gaoxinqu',
+        u'龙口':u'longkou',
+    }
+YANGZHOU_AREA_MAP=\
+    {
+        u'仪征市':u'yizhengshi',u'宝应市':u'baoyingshi',u'广陵区':u'guanglingqu',
+        u'开发区':u'kaifaqu',u'江都区':u'jiangduqu',u'邗江区':u'hanjiangqu',
+        u'高邮市':u'gaoyoushi',u'其他':u'qita,'
+    }
+ZHONGSHAN_AREA_MAP=\
+    {
+        u'三乡镇':u'sanxiangzhen',u'三角镇':u'sanjiaozhen',u'东凤镇':u'dongfengzhen',
+        u'东区':u'dongqu',u'东升镇':u'dongshengzhen',u'五桂山镇':u'wuguishanzhen',
+        u'南区':u'nanqu',u'南头镇':u'nantouzhen',u'南朗镇':u'nanlangzhen',u'古镇镇':u'guzhenzhen',
+        u'坦洲镇':u'tanzhouzhen',u'大涌镇':u'dayongzhen',u'小榄镇':u'xiaolanzhen',u'板芙镇':u'banfuzhen',
+        u'横栏镇':u'henglanzhen',u'民众镇':u'minzhongzhen',u'沙溪镇':u'shaxizhen',
+        u'港口镇':u'gangkouzhen',u'火炬开发区':u'huojukaifaqu',u'石岐区':u'shiqiqu',
+        u'神湾镇':u'shenwanzhen',u'西区':u'xiqu',
+        u'阜沙镇':u'fushazhen',u'黄圃镇':u'huangpuzhen',
+    }
+ZHUHAI_AREA_MAP=\
+    {
+        u'中山市':u'zhongshanshi',u'斗门':u'doumen',u'横琴':u'hengqin',
+        u'金湾':u'jinwan',u'香洲':u'xiangzhou',u'高栏港经济区':u'gaolangangjingjiqu',
+        u'其他':u'qita',
+    }
 
 # LianJia map for different cities and websites
 LIANJIA_MAP = \
@@ -348,6 +407,47 @@ LIANJIA_MAP = \
             u'website': u'http://wf.fang.lianjia.com/',
             u'area_map': WEIFANG_AREA_MAP
         },
+    u'Weizhou':
+        {
+            u'website': u'http://wz.fang.lianjia.com/',
+            u'area_map': WEIZHOU_AREA_MAP
+        },
+    u'Xian':
+        {
+            u'website': u'http://xa.fang.lianjia.com/',
+            u'area_map': XIAN_AREA_MAP
+        },
+    u'Xiamen':
+        {
+            u'website': u'http://xm.fang.lianjia.com/',
+            u'area_map': XIAMEN_AREA_MAP
+        },
+    u'Xuzhou':
+        {
+            u'website': u'http://xz.fang.lianjia.com/',
+            u'area_map': XUZHOU_AREA_MAP
+        },
+    u'Yantai':
+        {
+            u'website': u'http://yt.fang.lianjia.com/',
+            u'area_map': YANTAI_AREA_MAP
+        },
+    u'Yanzhou':
+        {
+            u'website': u'http://yz.fang.lianjia.com/',
+            u'area_map': YANGZHOU_AREA_MAP
+        },
+    u'Zhongshan':
+        {
+            u'website': u'http://zs.fang.lianjia.com/',
+            u'area_map': ZHONGSHAN_AREA_MAP
+        },
+    u'Zhuhai':
+        {
+            u'website': u'http://zh.fang.lianjia.com/',
+            u'area_map': ZHUHAI_AREA_MAP
+        },
+
 }
 
 
