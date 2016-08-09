@@ -3,6 +3,7 @@
 *.csv
 *.cfg
 *.log
+/logs
 .gitignore
 .ipynb_checkpoints
 *.json

@@ -107,6 +107,103 @@ LinXIN_AREA_MAP=\
         u'苍山县':u'cangshanxian',u'蒙阴县':u'mengyinxian',u'费县':u'feixian',u'郯城县':u'tanchengxian',
         u'高新区':u'gaoxinqu',
     }
+NANJING_AREA_MAP=\
+    {
+        u'玄武':u'xuanwu',u'秦淮':u'qinhuai',u'建邺':u'jianye',u'鼓楼':u'gulou',
+        u'浦口':u'pukou',u'栖霞':u'qixia',u'雨花台':u'yuhuatai',u'江宁':u'jiangning',
+        u'六合':u'liuhe',u'溧水':u'lishui',u'高淳':u'gaochun',
+    }
+NANTONG_AREA_MAP=\
+    {
+        u'启东':u'qidong',u'如东':u'rudong',u'如皋':u'rugao',u'崇川区':u'chongchuanqu',
+        u'开发区':u'kaifaqu',u'海安':u'haian',u'海门':u'haimen',
+        u'港闸区':u'gangzhaqu',u'通州区':u'tongzhouqu',
+    }
+QINGDAO_AREA_MAP=\
+    {
+        u'市南':u'shinan',u'市北':u'shibei',u'四方':u'sifang',u'黄岛':u'huangdao',
+        u'崂山':u'laoshan',u'李沧':u'licang',u'城阳':u'chengyang',u'胶州':u'jiaozhou',
+        u'即墨':u'jimo',u'平度':u'pingdu',u'胶南':u'jiaonan',u'莱西':u'laixi',
+        u'高新':u'gaoxin6',
+    }
+SHANGHAI_AREA_MAP=\
+    {
+        u'浦东':u'pudongxinqu',u'嘉定':u'jiading',u'松江':u'songjiang',u'宝山':u'baoshan',
+        u'闵行':u'minhang',u'青浦':u'qingpu',u'普陀':u'putuo',u'徐汇':u'xuhui',
+        u'杨浦':u'yangpu',u'闸北':u'zhabei',u'黄浦':u'huangpu',u'奉贤':u'fengxian',
+        u'长宁':u'changning',u'虹口':u'hongkou',u'静安':u'jingan',u'金山':u'jinshan',
+        u'崇明':u'chongming',u'上海周边':u'shanghaizhoubian',
+    }
+SHENZHEN_AREA_MAP=\
+    {
+        u'宝安':u'baoan',u'大鹏新区':u'dapengxinqu',u'福田':u'futian',u'光明新区':u'guangmingxinqu',
+        u'龙岗':u'longgang',u'龙华新区':u'longhuaxinqu',u'罗湖':u'luohu',u'南山':u'nanshan',
+        u'坪山新区':u'pingshanxinqu',u'盐田':u'yantian',u'惠州':u'huizhou',
+    }
+SOUZHOU_AREA_MAP=\
+    {
+        u'吴中':u'wuzhong',u'相城':u'xiangcheng',u'高新':u'gaoxin1',u'姑苏':u'gusu',
+        u'工业园区':u'gongyeyuan',u'吴江':u'wujiang',
+    }
+SHIJIAZHUANG_AREA_MAP=\
+    {
+        u'新华':u'xinhua',u'长安':u'changan',u'裕华':u'yuhua1',u'桥西':u'qiaoxi',
+        u'行唐':u'xingtang',u'正定':u'zhengding',u'栾城':u'luancheng',
+        u'平山':u'pingshan1',u'新乐':u'xinle',u'无极县':u'wujixian',u'辛集市':u'shenzexian',
+        u'赞皇县':u'zanhuangxian',u'赵县':u'zhaoxian',u'鹿泉':u'luquan',
+        u'藁城':u'gaocheng',u'元氏县':u'yuanshixian',u'高邑县':u'gaoyixian',
+        u'晋州市':u'jinzhoushi',u'井陉县':u'jingxingxian',u'灵寿县':u'lingshouxian',
+        u'开发区':u'kaifaqu1',
+    }
+SHENYANG_AREA_MAP=\
+    {
+        u'于洪':u'yuhong',u'和平':u'heping',u'大东':u'dadong',u'康平':u'kangping',
+        u'抚顺市':u'fushunshi',u'新民':u'xinmin',u'本溪市':u'benxishi',u'沈北新区':u'shenbeixinqu',
+        u'沈河':u'shenhe',u'浑南区':u'hunnanqu',u'皇姑':u'huanggu',u'苏家屯':u'sujiatun',
+        u'辽中':u'liaozhong',u'铁岭':u'tieling',u'铁西':u'tiexi',u'其他':u'qita',
+    }
+TIANJIN_AREA_MAP=\
+    {
+        u'和平':u'heping',u'河东':u'hedong',u'河西':u'hexi',u'南开':u'nankai',
+        u'河北':u'hebei',u'红桥':u'hongqiao',u'塘沽':u'tanggu',u'东丽':u'dongli',
+        u'西青':u'xiqing',u'津南':u'jinnan',u'北辰':u'beichen',u'武清':u'wuqing',
+        u'滨海新区':u'binhaixinqu',u'开发区':u'kaifaqutj',u'宝坻':u'baodi',
+        u'宁河':u'ninghe',u'静海':u'jinghai',u'蓟县':u'jixian',
+    }
+TANGSHAN_AREA_MAP=\
+    {
+        u'丰南':u'fengnan',u'丰润':u'fengrun',u'乐亭县':u'laotingxian',u'古冶':u'guye',
+        u'开平':u'kaiping',u'曹妃甸新区':u'caofeidianxinqu',u'汉沽管理区':u'hanguguanliqu',
+        u'海港开发区':u'haigangkaifaqu',u'滦南县':u'luannanxian',u'滦县':u'luanxian',
+        u'玉田县':u'yutianxian',u'路北':u'lubei',u'路南':u'lunan',u'迁安市':u'qiananshi',
+        u'迁西县':u'qianxixian',u'遵化市':u'zunhuashi',u'高新区':u'gaoxinqu',
+    }
+TAIYUAN_AREA_MAP=\
+    {
+        u'万柏林':u'wanbolin',u'小店':u'xiaodian',u'尖草坪':u'jiancaoping',
+        u'晋源':u'jinyuan',u'杏花岭':u'xinghualing',u'榆次':u'yuci',
+        u'迎泽':u'yingze',u'阳曲':u'yangqu',
+    }
+WUHAN_AREA_MAP=\
+    {
+        u'汉南':u'hannan',u'蔡甸':u'caidian',u'江夏':u'jiangxia',u'黄陂':u'huangbei',
+        u'新洲':u'xinzhou',u'江岸':u'jiangan',u'江汉':u'jianghan',u'武昌':u'wuchang',
+        u'硚口':u'qiaokou',u'汉阳':u'hanyang',u'洪山':u'hongshan',u'东西湖':u'dongxihu',
+        u'青山':u'qingshan',
+    }
+WUXI_AREA_MAP=\
+    {
+        u'北塘区':u'beitangqu',u'南长区':u'nanchangqu',u'崇安区':u'chonganqu',u'惠山区':u'huishanqu',
+        u'新区':u'xinqu',u'滨湖区':u'binhuqu',u'锡山区':u'xishanqu',u'其他':u'qita',
+    }
+WEIFANG_AREA_MAP=\
+    {
+        u'临朐县':u'linquxian',u'坊子':u'fangzi',u'奎文':u'kuiwen',u'安丘市':u'anqiushi',
+        u'寒亭':u'hanting',u'寿光市':u'shouguangshi',u'峡山经济开发区':u'xiashanjingjikaifaqu',
+        u'昌乐县':u'changlexian',u'昌邑市':u'changyishi',u'滨海经济开发区':u'binhaijingjikaifaqu',
+        u'潍城':u'weicheng',u'经济开发区':u'jingjikaifaqu',u'诸城市':u'zhuchengshi',
+        u'青州市':u'qingzhoushi',u'高密市':u'gaomishi',u'高新技术开发区':u'gaoxinjishukaifaqu',
+    }
 
 # LianJia map for different cities and websites
 LIANJIA_MAP = \
@@ -180,6 +277,76 @@ LIANJIA_MAP = \
         {
             u'website': u'http://lin.fang.lianjia.com/',
             u'area_map': LinXIN_AREA_MAP
+        },
+    u'Nanjing':
+        {
+            u'website': u'http://nj.fang.lianjia.com/',
+            u'area_map': NANJING_AREA_MAP
+        },
+    u'Nantong':
+        {
+            u'website': u'http://nt.fang.lianjia.com/',
+            u'area_map': NANTONG_AREA_MAP
+        },
+    u'Qingdao':
+        {
+            u'website': u'http://qd.fang.lianjia.com/',
+            u'area_map': QINGDAO_AREA_MAP
+        },
+    u'Shanghai':
+        {
+            u'website': u'http://sh.fang.lianjia.com/',
+            u'area_map': SHANGHAI_AREA_MAP
+        },
+    u'Shenzhen':
+        {
+            u'website': u'http://sz.fang.lianjia.com/',
+            u'area_map': SHENZHEN_AREA_MAP
+        },
+    u'Souzhou':
+        {
+            u'website': u'http://su.fang.lianjia.com/',
+            u'area_map': SOUZHOU_AREA_MAP
+        },
+    u'Shijiazhuang':
+        {
+            u'website': u'http://sjz.fang.lianjia.com/',
+            u'area_map': SHIJIAZHUANG_AREA_MAP
+        },
+    u'Shenyang':
+        {
+            u'website': u'http://sy.fang.lianjia.com/',
+            u'area_map': SHENYANG_AREA_MAP
+        },
+    u'Tianjin':
+        {
+            u'website': u'http://tj.fang.lianjia.com/',
+            u'area_map': TIANJIN_AREA_MAP
+        },
+    u'Tangshan':
+        {
+            u'website': u'http://ts.fang.lianjia.com/',
+            u'area_map': TANGSHAN_AREA_MAP
+        },
+    u'Taiyuan':
+        {
+            u'website': u'http://ty.fang.lianjia.com/',
+            u'area_map': TAIYUAN_AREA_MAP
+        },
+    u'Wuhan':
+        {
+            u'website': u'http://wh.fang.lianjia.com/',
+            u'area_map': WUHAN_AREA_MAP
+        },
+    u'Wuxi':
+        {
+            u'website': u'http://wx.fang.lianjia.com/',
+            u'area_map': WUXI_AREA_MAP
+        },
+    u'Weifang':
+        {
+            u'website': u'http://wf.fang.lianjia.com/',
+            u'area_map': WEIFANG_AREA_MAP
         },
 }
 

@@ -216,4 +216,11 @@ if __name__ == '__main__':
     analysis.TF_IDF()
 
     # print analysis.top_frequency
-    save_to_jason(analysis.top_frequency)
+    # save_to_jason(analysis.top_frequency)
+
+    from datetime import date
+    from utils.path_util import PROJECT_DIR
+    json_out_path = PROJECT_DIR + '/data/json/crawler/news/{0}_cnn_news.json'.format(str(date.today()))
+
+    with open(json_out_path,'w') as f:
+        json.dump(analysis.top_frequency, f)
