@@ -354,7 +354,7 @@ LIANJIA_MAP = \
         },
     u'Shanghai':
         {
-            u'website': u'http://sh.fang.lianjia.com/',
+            u'website': u'http://sh.fang.lianjia.com',
             u'area_map': SHANGHAI_AREA_MAP
         },
     u'Shenzhen':

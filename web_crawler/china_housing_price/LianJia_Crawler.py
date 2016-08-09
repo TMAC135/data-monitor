@@ -12,6 +12,9 @@ Version:
 
 08/03:
     1: add the log
+08/09:
+    1: modify the url for Suzhou and Shanghai for special after debuging
+    2: save the result to the json file
 '''
 import requests
 from bs4 import BeautifulSoup
@@ -50,7 +53,10 @@ class LianJiaCrawler(object):
                        value is list of url in this area
 
         '''
-        self._url = url + '/loupan'  # the price information is with this suffix
+        if url[7:9] == 'sh' or url[7:9] == 'su': # special url for Shanghai and Suzhou
+            self._url = url + '/list'
+        else:
+            self._url = url + '/loupan'  # the price information is with this suffix
         self._url_dict = defaultdict(list)
         self._html_dict = defaultdict(list)
         self._price_dict = {}
@@ -169,10 +175,14 @@ class LianJiaCrawler(object):
             # print each_line_no_space[:2]
             # print each_line_no_space[:2] == u'场均'
             if each_line_no_space[:2] == u'均价':
-                succ_count += 1
-                # extract the price for every line and add them to the total price
-                price = re.findall('\d+', each_line_no_space)
-                total_price += float(price[0])
+                try:
+                    # extract the price for every line and add them to the total price
+                    price = re.findall('\d+', each_line_no_space)
+                    if len(price) is not 0:
+                        total_price += float(price[0])
+                        succ_count += 1
+                except Exception as e:
+                    self.logger.exception(e)
         return succ_count, total_price
 
 
@@ -189,7 +199,8 @@ if __name__ == '__main__':
     # print lianjia._price_dict
 
     from datetime import date
-    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_lianjia_housing.json'.format(str(date.today()))
+    # json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_lianjia_housing.json'.format(str(date.today()))
+    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_shanghai_housing.json'.format(str(date.today()))
 
     json_dict = {}
     for city, confg in LIANJIA_MAP.items():
