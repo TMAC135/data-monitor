@@ -1,0 +1,13 @@
+{% include 'layout/header.html' %}
+<body>
+
+<div class="container">
+    {% include 'layout/Nav.html' %}
+    <h4 align="middle">{{title}}</h4>
+    {% block tools %}{% endblock %}
+
+    {% block body %}{% endblock %}
+</div>
+</body>
+
+{% include 'layout/footer.html' %}

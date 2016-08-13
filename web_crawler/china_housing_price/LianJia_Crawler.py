@@ -199,8 +199,8 @@ if __name__ == '__main__':
     # print lianjia._price_dict
 
     from datetime import date
-    # json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_lianjia_housing.json'.format(str(date.today()))
-    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_shanghai_housing.json'.format(str(date.today()))
+    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_lianjia_housing.json'.format(str(date.today()))
+    # json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_shanghai_housing.json'.format(str(date.today()))
 
     json_dict = {}
     for city, confg in LIANJIA_MAP.items():
@@ -213,8 +213,3 @@ if __name__ == '__main__':
      # save the price to the json file
     with open(json_out_path, 'w') as f:
         json.dump(json_dict,f)
-
-
-
-
-

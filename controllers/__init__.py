@@ -5,7 +5,8 @@ Created: 16/7/28
 Version: 1.0
 Update:
 '''
-
+from monitor_app import *
+from monitor_login import *
 
 class MyClass(object):
     '''

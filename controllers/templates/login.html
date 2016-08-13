@@ -1,0 +1,42 @@
+{% extends "layout/layout_login.html" %}
+{% block body %}
+<h4 align="center">Data Monitor</h4>
+<div style="margin-top:100px;text-align:center;vertical-align: middle;">
+    <div style="text-align:center;">
+         <form method="POST" action="/login">
+             {{ form.csrf_token }}
+         <table>
+
+             <tr>
+                 <th style="text-align:right;width:400px">
+                      {{ form.username.label }}
+                 </th>
+                 <td style="text-align:center;width:400px">
+                     {{ form.username(size=30) }}
+                 </td>
+             </tr>
+             <tr>
+                 <th style="text-align:right;width:400px">
+                      {{ form.password.label }}
+                 </th>
+                 <td style="text-align:center;width:400px">
+                     {{ form.password(size=30) }}
+                 </td>
+             </tr>
+              <tr>
+                 <th>
+
+                 </th>
+                 <td style="text-align:center;">
+                      {{ form.submit(size=20) }}{#        <input type="submit" value="Go">#}
+                 </td>
+             </tr>
+         </table>
+         </form>
+        </div>
+    <br>
+    <br>
+    <br>
+    <p>@Ran Tian, Qi Mo</p>
+</div>
+{% endblock %}

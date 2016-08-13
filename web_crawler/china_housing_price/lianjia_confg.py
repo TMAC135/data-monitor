@@ -48,7 +48,6 @@ DALIAN_AREA_MAP=\
         u'中山':u'zhongshan',u'西岗':u'xigang',u'沙河口':u'shahekou',u'甘井子':u'ganjingzi',
         u'旅顺口':u'lvshunkou',u'金州':u'jinzhou',u'长海':u'changhai',u'瓦房店':u'wafangdian',
         u'普兰店':u'pulandian',u'庄河':u'zhuanghe',u'高新园区':u'gaoxinyuanqu',u'开发区':u'kaifaqudl',
-
     }
 DONGGUAN_AREA_MAP=\
     {
