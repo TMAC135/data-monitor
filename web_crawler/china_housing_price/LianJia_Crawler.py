@@ -24,7 +24,7 @@ import logging
 import json
 
 # functions from util package
-from utils.path_util import PROJECT_DIR
+from utils.path_util import *
 from utils.log_util import log_format
 
 # Beijing area map for different url in lianjia website
@@ -199,8 +199,7 @@ if __name__ == '__main__':
     # print lianjia._price_dict
 
     from datetime import date
-    # json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_lianjia_housing.json'.format(str(date.today()))
-    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_shanghai_housing.json'.format(str(date.today()))
+    json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_lianjia_housing.json'.format(str(date.today()))
 
     json_dict = {}
     for city, confg in LIANJIA_MAP.items():
