@@ -7,7 +7,24 @@ Update:
     08/03: ensure_dir
 '''
 import os
-import traceback
+import logging
+
+def ensure_dir(file_dir):
+    '''
+    Make sure the file directory exist, if not, create it.
+    :param file_path:
+    :return:
+    '''
+    logger = logging.getLogger('LogUtils')
+    try:
+        if not os.path.exists(file_dir):
+            os.makedirs(file_dir)
+    except Exception as e:
+        logger.exception(e)
+
+
+
+
 
 
 
