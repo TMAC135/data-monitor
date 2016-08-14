@@ -13,16 +13,18 @@ class HousingPriceMysql(object):
     '''
 
     def __init__(self):
-
         self.__housing_mongo_config()
 
     def __housing_mongo_config(self):
-        self.host = database_config.get('myql_crawling', 'host')
-        self.user = database_config.get('myql_crawling', 'user')
-        self.password = database_config.get('myql_crawling', 'password')
-        self.db_name = database_config.get('myql_crawling', 'db_name')
+        self.host = database_config.get('mysql_crawling', 'host')
+        self.user = database_config.get('mysql_crawling', 'user')
+        self.password = database_config.get('mysql_crawling', 'password')
+        self.db_name = database_config.get('mysql_crawling', 'db_name')
 
+housing_price_mysql = HousingPriceMysql()
 
 if __name__ == '__main__':
-    housing_mongo = HousingPriceMysql()
-    print housing_mongo.password
+    # print database_config
+    # print database_config.get('myql_crawling','user')
+    print housing_price_mysql
+    print housing_price_mysql.user,housing_price_mysql.password

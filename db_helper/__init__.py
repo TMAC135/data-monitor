@@ -6,17 +6,7 @@ Version: 1.0
 Update:
 '''
 
-
-class MyClass(object):
-    '''
-    
-    '''
-
-    def __init__(self):
-        '''
-        
-        '''
-        pass
+from mysql import *
 
 
 if __name__ == '__main__':
