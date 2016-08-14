@@ -199,6 +199,8 @@ if __name__ == '__main__':
     # print lianjia._price_dict
 
     from datetime import date
+    from utils.file_utils import ensure_dir
+    ensure_dir(PROJECT_DIR + '/data/json/crawler/housing')
     json_out_path = PROJECT_DIR + '/data/json/crawler/housing/{0}_lianjia_housing.json'.format(str(date.today()))
 
     json_dict = {}
