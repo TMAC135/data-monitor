@@ -6,6 +6,8 @@ Version: 1.0
 Update:
 '''
 import ConfigParser
+import logging
+from utils import PROJECT_DIR
 
 class DatabaseConfig(object):
     '''
@@ -13,8 +15,13 @@ class DatabaseConfig(object):
     config file is default.cfg under the same directory.
     '''
     def __init__(self):
+        self.logger = logging.getLogger(type(self).__name__)
+
         self.config = ConfigParser.ConfigParser()
-        self.config.readfp(open("defaults.cfg"))
+        try:
+            self.config.readfp(open(PROJECT_DIR + "/config/databases/defaults.cfg"))
+        except Exception as e:
+            self.logger.exception(e)
 
     def get(self,section,key):
         '''
@@ -23,9 +30,12 @@ class DatabaseConfig(object):
         :param key:
         :return:
         '''
-        return self.config.get(section,key)
+        try:
+            return self.config.get(section,key)
+        except Exception as e:
+            self.logger.exception(e)
 
 database_config = DatabaseConfig()
 
 if __name__ == '__main__':
-    pass
+    print database_config.get('mysql_crawling','db_name')
