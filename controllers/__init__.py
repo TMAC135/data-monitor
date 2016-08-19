@@ -7,6 +7,7 @@ Update:
 '''
 from monitor_app import *
 from monitor_login import *
+from monitor_HousingPrice import *
 
 class MyClass(object):
     '''
