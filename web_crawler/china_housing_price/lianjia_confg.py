@@ -361,7 +361,7 @@ LIANJIA_MAP = \
             u'website': u'http://sz.fang.lianjia.com/',
             u'area_map': SHENZHEN_AREA_MAP
         },
-    u'Souzhou':
+    u'Suzhou':
         {
             u'website': u'http://su.fang.lianjia.com/',
             u'area_map': SOUZHOU_AREA_MAP
@@ -401,7 +401,7 @@ LIANJIA_MAP = \
             u'website': u'http://wx.fang.lianjia.com/',
             u'area_map': WUXI_AREA_MAP
         },
-    u'Weifang':
+    u'Wenfang':
         {
             u'website': u'http://wf.fang.lianjia.com/',
             u'area_map': WEIFANG_AREA_MAP
