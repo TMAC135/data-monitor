@@ -401,12 +401,12 @@ LIANJIA_MAP = \
             u'website': u'http://wx.fang.lianjia.com/',
             u'area_map': WUXI_AREA_MAP
         },
-    u'Wenfang':
+    u'Weifang':
         {
             u'website': u'http://wf.fang.lianjia.com/',
             u'area_map': WEIFANG_AREA_MAP
         },
-    u'Weizhou':
+    u'Wenzhou':
         {
             u'website': u'http://wz.fang.lianjia.com/',
             u'area_map': WEIZHOU_AREA_MAP
