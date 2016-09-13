@@ -15,7 +15,12 @@ Version:
 08/09:
     1: modify the url for Suzhou and Shanghai for special after debuging
     2: save the result to the json file
+09/11:
+    add the project root dir to the enviroment, this is useful when
+    we deploy the project in server.
 '''
+from __init__ import *
+
 import requests
 from bs4 import BeautifulSoup
 import re
