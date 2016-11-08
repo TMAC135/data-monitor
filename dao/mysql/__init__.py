@@ -4,6 +4,7 @@ Author: TianRan
 Date: 8/14/16
 Version:
 '''
+from housing_price_mysql import *
 
 if __name__ == '__main__':
     pass

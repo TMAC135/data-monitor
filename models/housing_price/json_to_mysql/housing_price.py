@@ -9,10 +9,11 @@ Version:
         3: add more log logistic when updating the data to databse
 
 '''
+from __init__ import  *
 import logging
 import json
 import arrow as ar
-from dao.mysql.housing_price_mysql import *
+from dao.mysql import *
 from datetime import timedelta, date
 import os
 
@@ -81,6 +82,7 @@ class UpdateHousingPriceToMysql(object):
 
 
 if __name__ == '__main__':
+
     from utils import PROJECT_DIR
     from utils import log_format
 
