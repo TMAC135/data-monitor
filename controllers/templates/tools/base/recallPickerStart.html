@@ -1,0 +1,29 @@
+ <div class="btn-group">
+    {% if smooth %}<button style="width: 100px" data-toggle="dropdown" id='overdue_type' class="btn btn-primary dropdown-toggle btn-sm" type="button">{{smooth}}<span class="caret"></span></button>{% endif %}
+      <ul style="width: 60px" role="menu" id='overdue_type_ul' class="dropdown-menu dropdown-toggle">
+
+         <!--<li><a id='test' href="#" value="全国" >全国</a></li>-->
+
+         {% for smooth_num in  smooth_num_list %}
+             <li><a href="#" value="{{ smooth_num }}">{{ smooth_num }}</a></li>
+         {% endfor %}
+         <!--<li><a href="#" value="其他">其他</a></li>-->
+      </ul>
+ </div>
+
+<script>
+$(function() {
+    String.prototype.format=function()
+    {
+        if(arguments.length==0) return this;
+        for(var s=this, i=0; i<arguments.length; i++)
+        s=s.replace(new RegExp("\\{"+i+"\\}","g"), arguments[i]);
+        return s;
+    };
+
+
+    $("#overdue_type_ul li a").click(function() {
+        $("#overdue_type").html(this.text+'<span class="caret"></span>')
+    });
+});
+</script>

@@ -1,0 +1,126 @@
+{% extends "tools/base/basepickController.html" %}
+
+{% block forTime %}
+{% include 'tools/base/timePicker.html' %}
+{% include 'tools/base/recallPickerStart.html' %}
+{% endblock %}
+
+{% block forJS %}
+<script>
+    <!--学校详情的排名-->
+    $(function () {
+        $("#Search").click(function () {
+            flag = GetFlag();
+            module = GetModuleName();
+            data_post = "";
+            if ($("#overdue_type").text().length > 0)
+                data_post += "day=" + $("#overdue_type").text() + "&";
+
+            if (flag.trim() != ''){
+                data_post += "inv_ID=" + flag + "&";
+            }
+            if (module.trim() != ''){
+                data_post += "module_name=" + module + "&";
+            }
+
+            if ($("#start_time").val().length > 0)
+                data_post += "begin=" + $("#start_time").val() + "&";
+            if ($("#end_time").val().length > 0)
+                data_post += "end=" + $("#end_time").val();
+            url = "?" + data_post;
+            window.location.href = url;
+        });
+//        $("#monitor_result_0").click(function () {
+//            var table = document.getElementById("monitor_result_0").getElementsByTagName('tr')
+//            for (var i = 0; i < table.length; i++) table[i].onclick = function () {
+//                strs = this.innerText.split('\t');
+//                if (strs[0] != "序号") {
+//                    mercId = strs[2];
+//                    mercUserId = strs[3];
+//                    data = "mercId=" + mercId + "&" + "mercUserId="+ mercUserId;
+//                    url = "/api/shuxiang_paixiewang/monitor_user_details?" + data;
+//                    window.open(url);
+//                }
+//
+//            }
+//        });
+    });
+
+
+function GetRequest() {
+
+  var url = location.search; //获取url中"?"符后的字串
+   var theRequest = "";
+   if (url.indexOf("?") != -1) {
+      var str = url.substr(1);
+      strs = str.split("&");
+      for(var i = 0; i < strs.length; i ++) {
+          if(strs[i].split("=")[0]=="flag")
+          {
+              return strs[i].split("=")[1]
+          }
+      }
+   }
+   return theRequest;
+}
+
+function GetFlag() {
+
+    var url = window.location.href; //获取url中"?"符后的字串
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(url.indexOf("?")+1);
+        var flag = str.substr(str.indexOf("inv_ID=")+7);
+        if (flag == ''){
+            return "";
+        }
+        if(flag.indexOf('&')!=-1)
+        {
+            flag = flag.substr(0,flag.indexOf('&'))
+        }
+        if(flag.indexOf('#')!=-1)
+        {
+            flag = flag.substr(0,flag.indexOf('#'))
+        }
+
+        return flag;
+    }
+    else
+    {
+        return "";
+    }
+}
+
+function GetModuleName(){
+    var url = window.location.href; //获取url中"?"符后的字串
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(url.indexOf("?")+1);
+        var module = str.substr(str.indexOf("module_name=")+12);
+        if (module == null){
+            return "";
+        }
+        if(module.indexOf('&')!=-1)
+        {
+            module = module.substr(0,module.indexOf('&'))
+        }
+        if(module.indexOf('#')!=-1)
+        {
+            module = module.substr(0,module.indexOf('#'))
+        }
+
+        return module;
+    }
+    else
+    {
+        return "";
+    }
+
+}
+
+$(function () {
+    $('tr.parent').click(function () {
+        $(this)
+                .siblings('.child').toggle()
+    })
+})
+</script>
+{% endblock %}

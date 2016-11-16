@@ -1,0 +1,25 @@
+{% extends "layout/layout.html" %}
+{% block tools %}
+{% endblock %}
+
+{% block body %}
+<div id='monitor_result_0' style="margin-top: 2%;">
+    <table border="1" width="80%" align="center" style="margin-bottom: 20px;">
+
+        <tr class="parent" align="center" style="font-size: 18px;color:#FFFFFF;background-color: #0044cc">
+            <th style="text-align:center">城市序列</th>
+            <th style="text-align:center">城市名称</th>
+            <th style="text-align:center">操作</th>
+        </tr>
+        {% for item in city_dict %}
+        <tr class="child">
+            <td align="middle">{{ item }}</td>
+            <td align="middle">{{ city_dict[item] }}</td>
+            <td align="middle"><a href="./housing_price?city={{ city_dict[item] }}">查看</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}

@@ -3,6 +3,11 @@
 Author: TianRan
 Date: 8/13/16
 Version:
+
+Update:
+
+11/15/2016 QI MO
+add executemany
 '''
 import logging
 class MySQLHelper(object):
@@ -24,6 +29,15 @@ class MySQLHelper(object):
         :return:
         """
         return self._db.execute(sql, *kwargs,**kwargsdict)
+
+    def executemany(self, sql,  *kwargs,**kwargsdict):
+        """
+        Update, Insert, Delete
+        :param sql: 传入的SQL 语句，参数用 %s 对应
+        :param kwargs:
+        :return:
+        """
+        return self._db.executemany(sql,  *kwargs,**kwargsdict)
 
     def query(self, sql, *kwargs, **kwargsdict):
         """

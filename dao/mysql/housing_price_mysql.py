@@ -3,6 +3,11 @@
 Author: TianRan
 Date: 8/14/16
 Version:
+
+Update:
+
+November 16, 2016 by QI MO
+add get_city_housing_price
 '''
 import logging
 from db_helper import houisng_price_db_connection, MySQLHelper
@@ -20,6 +25,21 @@ class HousingPriceMysqlDao(object):
         self.logger = logging.getLogger(type(self).__name__)
         self._mysql_helper = MySQLHelper(houisng_price_db_connection)  # get the db connection for housing price
         self._table_name = table_name
+
+    def get_city_housing_price(self,date_end,date_begin,city_name):
+        """
+        get the sql result by date_time and city_name
+        :param date_end:
+        :param date_begin:
+        :param city_name:
+        :return:
+        """
+
+        sql = "SELECT date_time, city, avg(value) FROM {table_name} " \
+              "WHERE date_time<=%(date_end)s AND date_time>=%(date_begin)s " \
+              "AND city=%(city_name)s GROUP BY date_time, city ;".format(table_name=self._table_name)
+        result = self._mysql_helper.query(sql,date_end=date_end, date_begin=date_begin,city_name=city_name)
+        return result
 
     def insert_update_one(self, date_time, city, area, type, value):
         '''
@@ -85,6 +105,7 @@ class HousingPriceMysqlDao(object):
         except Exception as e:
             self.logger.exception(e)
             return False
+
 
 
 

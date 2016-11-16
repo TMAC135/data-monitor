@@ -88,5 +88,5 @@ if __name__ == '__main__':
 
     log_format(PROJECT_DIR + 'logs/test')
     json_dir = "{project_dir}/data/json/crawler/housing".format(project_dir=PROJECT_DIR)
-    update_to_mysql = UpdateHousingPriceToMysql('housing_price', '2016-08-21', '2016-09-06')
+    update_to_mysql = UpdateHousingPriceToMysql('housing_price', '2016-07-31', '2016-11-16')
     update_to_mysql.update(json_dir)
