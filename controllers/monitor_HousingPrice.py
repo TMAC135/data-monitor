@@ -7,6 +7,10 @@ Update:
 
 November 16, 2016
 add city_list and picture the housing_price
+
+November 20, 2016
+    1: add Minneapolis crime prediction controller,
+    2: add us airline delay prediction controller
 '''
 
 import hashlib
@@ -48,12 +52,13 @@ def first_tier_city_list():
     perm2 = Permission(Need('need2', 'my_value'))
 
     return render_template('housing_price/city_dict.html',
-                           title='选择城市',
+                           title='Choose City',
                            permission1=perm1.can(),
                            permission2=perm2.can(),
                            user=session['username'],
                            city_dict=city_dict
                            )
+
 
 @app.route('/housing_price', methods=['POST', 'GET'])
 @flask_login.login_required
@@ -104,3 +109,45 @@ def housing_price():
                                date_end=date_end
                                )
     return redirect(url_for('housing_price', _external=True, _scheme='http'))
+
+###########################################################################
+# minneapolis crime prediction
+###########################################################################
+@app.route('/minneapolis_simple_analysis')
+@flask_login.login_required
+def minneapolis_simple_analysis():
+    '''
+    choose housing price city
+    :return:
+    '''
+    # 权限管理
+
+    perm1 = Permission(Need('need1', 'my_value'))
+    perm2 = Permission(Need('need2', 'my_value'))
+
+    return render_template('minneapolis_crime_prediction/data_analysis_crimes.html',
+                           permission1=perm1.can(),
+                           permission2=perm2.can(),
+                           user=session['username'],
+                           )
+
+###########################################################################
+# us airline delay prediction
+###########################################################################
+@app.route('/us_airline_delay_prediction')
+@flask_login.login_required
+def us_airline_delay_prediction():
+    '''
+    choose
+    :return:
+    '''
+    # 权限管理
+
+    perm1 = Permission(Need('need1', 'my_value'))
+    perm2 = Permission(Need('need2', 'my_value'))
+
+    return render_template('us_airline_delay_prediction/data_analysis.html',
+                           permission1=perm1.can(),
+                           permission2=perm2.can(),
+                           user=session['username'],
+                           )

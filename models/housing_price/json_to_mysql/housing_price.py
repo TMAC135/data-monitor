@@ -24,7 +24,7 @@ class UpdateHousingPriceToMysql(object):
     config of the database, go to the defaults.cfg under config/databases
     '''
 
-    def __init__(self, table_name, start_time, end_time):
+    def __init__(self, table_name, start_time, end_time,days=7):
         '''
         :param table_name: table name of mysql datebase
         :param start_time: start_time of the json,str type,like '2016-06-01'
@@ -33,8 +33,13 @@ class UpdateHousingPriceToMysql(object):
         self.logger = logging.getLogger(type(self).__name__)
         self._mysql_dao = HousingPriceMysqlDao(table_name)
         try:
-            self._start_time = ar.get(start_time).naive.date()
-            self._end_time = ar.get(end_time).naive.date()
+            # it depends on the parameter we pass to form the start and end time
+            if not start_time and not end_time:
+                self._end_time = ar.utcnow().date()
+                self._start_time = self._end_time - timedelta(days=days)
+            else:
+                self._start_time = ar.get(start_time).naive.date()
+                self._end_time = ar.get(end_time).naive.date()
         except Exception as e:
             self.logger.exception(e)
 
@@ -88,5 +93,5 @@ if __name__ == '__main__':
 
     log_format(PROJECT_DIR + 'logs/test')
     json_dir = "{project_dir}/data/json/crawler/housing".format(project_dir=PROJECT_DIR)
-    update_to_mysql = UpdateHousingPriceToMysql('housing_price', '2016-07-31', '2016-11-16')
+    update_to_mysql = UpdateHousingPriceToMysql('housing_price', None, None,7) # 默认更新近一周的数据
     update_to_mysql.update(json_dir)
