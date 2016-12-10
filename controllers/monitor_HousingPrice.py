@@ -11,10 +11,13 @@ add city_list and picture the housing_price
 November 20, 2016
     1: add Minneapolis crime prediction controller,
     2: add us airline delay prediction controller
+<<<<<<< HEAD
 
 Dec 7, 2016
     the github for flask google map is: https://github.com/rochacbruno/Flask-GoogleMaps
     1: add more templates for the crime prediction for google map with flask
+=======
+>>>>>>> 65e2c7f642e623db598415fedfcbb5b7e7d38dd6
 '''
 
 import hashlib
@@ -117,6 +120,7 @@ def housing_price():
 ###########################################################################
 # minneapolis crime prediction
 ###########################################################################
+<<<<<<< HEAD
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map, icons
 
@@ -127,6 +131,8 @@ app.config['GOOGLEMAPS_KEY'] = "AIzaSyAZzeHhs-8JZ7i18MjFuM35dJHq70n3Hx4"
 # you can also pass key here
 GoogleMaps(app, key="AIzaSyAZzeHhs-8JZ7i18MjFuM35dJHq70n3Hx4")
 
+=======
+>>>>>>> 65e2c7f642e623db598415fedfcbb5b7e7d38dd6
 @app.route('/minneapolis_simple_analysis')
 @flask_login.login_required
 def minneapolis_simple_analysis():
@@ -134,6 +140,7 @@ def minneapolis_simple_analysis():
     choose housing price city
     :return:
     '''
+<<<<<<< HEAD
     # permission manage
     perm1 = Permission(Need('need1', 'my_value'))
     perm2 = Permission(Need('need2', 'my_value'))
@@ -238,6 +245,18 @@ def minneapolis_simple_analysis():
             movingmarkers=movingmarkers,
     )
 
+=======
+    # 权限管理
+
+    perm1 = Permission(Need('need1', 'my_value'))
+    perm2 = Permission(Need('need2', 'my_value'))
+
+    return render_template('minneapolis_crime_prediction/data_analysis_crimes.html',
+                           permission1=perm1.can(),
+                           permission2=perm2.can(),
+                           user=session['username'],
+                           )
+>>>>>>> 65e2c7f642e623db598415fedfcbb5b7e7d38dd6
 
 ###########################################################################
 # us airline delay prediction
@@ -249,7 +268,12 @@ def us_airline_delay_prediction():
     choose
     :return:
     '''
+<<<<<<< HEAD
     # permission management
+=======
+    # 权限管理
+
+>>>>>>> 65e2c7f642e623db598415fedfcbb5b7e7d38dd6
     perm1 = Permission(Need('need1', 'my_value'))
     perm2 = Permission(Need('need2', 'my_value'))
 
