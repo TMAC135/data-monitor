@@ -120,6 +120,8 @@ def housing_price():
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map, icons
 
+from models.minneapolis_crime_prediction import *
+crime_model = MinneapolisCrimePrediction()
 
 # you can set key as config
 app.config['GOOGLEMAPS_KEY'] = "AIzaSyAZzeHhs-8JZ7i18MjFuM35dJHq70n3Hx4"
@@ -141,20 +143,21 @@ def minneapolis_simple_analysis():
     # get the parameter from the form
     lat = request.args.get('lati',44.977276 , type=float)
     lon = request.args.get('long', -93.232266, type=float)
+    date = request.args.get('date', '', type=str)
     time = request.args.get('time', "12:00", type=str)
-    # print lat
-    # print lon
-    # print time
 
-    maker_box = "Latitude:{0}<br>Longtitude:{1}<br>Time:{2}<br>Predictions:{3} for {4}, {5} fro {6}".format(lat,lon,time,
-                                                        0.99,"theft",0.45,"v")
+    global crime_model
+    top_2_result = crime_model.predict_from_lr(lat,lon,date,time,2)
+
+    maker_box = "Latitude:{0}<br>Longtitude:{1}<br>Time:{2}<br>Predictions: <ol>{3} for {4}</ol><ol>{5} for {6}</ol>".format(lat,lon,time,
+                top_2_result[0][0],top_2_result[0][1],top_2_result[1][0],top_2_result[1][1])
     sndmap = Map(
         identifier="sndmap",
         varname="sndmap",
         zoom=11,
         lat=44.977276,
         lng=-93.232266,
-        style="height:500px;width:1000px;margin:0;",
+        style="height:600px;width:1200px;margin:0;",
         markers={
             # icons.dots.green: [(37.4419, -122.1419), (37.4500, -122.1350)],
             icons.dots.blue: [(lat, lon, maker_box)]
