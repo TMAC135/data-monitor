@@ -1,3 +1,4 @@
+
 {% extends "layout/layout.html" %}
 {% block tools %}
 
@@ -10,7 +11,6 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Flask Google Maps Example</title>
             {{"decoupled-map"|googlemap_js(37.4419, -122.1419, varname="decoupledmap", markers=[(37.4419, -122.1419)])}}
-            {{mymap.js}}
             {{sndmap.js}}
 
 

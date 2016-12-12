@@ -13,14 +13,9 @@
             flag = GetFlag();
             module = GetModuleName();
             data_post = "";
-            if ($("#overdue_type").text().length > 0)
-                data_post += "day=" + $("#overdue_type").text() + "&";
 
             if (flag.trim() != ''){
-                data_post += "inv_ID=" + flag + "&";
-            }
-            if (module.trim() != ''){
-                data_post += "module_name=" + module + "&";
+                data_post += "city=" + flag + "&";
             }
 
             if ($("#start_time").val().length > 0)
@@ -69,7 +64,7 @@ function GetFlag() {
     var url = window.location.href; //获取url中"?"符后的字串
     if (url.indexOf("?") != -1) {
         var str = url.substr(url.indexOf("?")+1);
-        var flag = str.substr(str.indexOf("inv_ID=")+7);
+        var flag = str.substr(str.indexOf("city=")+5);
         if (flag == ''){
             return "";
         }

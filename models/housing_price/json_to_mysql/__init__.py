@@ -14,5 +14,10 @@ sys.path.append(os.path.normpath(current_path))
 reload(sys)
 
 if __name__ == '__main__':
-    pass
-    # print sys.path.append()
+
+    import arrow as ar
+    from datetime import timedelta
+
+    end = ar.utcnow().date()
+    start = end - timedelta(days=5)
+    print start

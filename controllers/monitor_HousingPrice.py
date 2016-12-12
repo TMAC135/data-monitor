@@ -7,6 +7,14 @@ Update:
 
 November 16, 2016
 add city_list and picture the housing_price
+
+November 20, 2016
+    1: add Minneapolis crime prediction controller,
+    2: add us airline delay prediction controller
+
+Dec 7, 2016
+    the github for flask google map is: https://github.com/rochacbruno/Flask-GoogleMaps
+    1: add more templates for the crime prediction for google map with flask
 '''
 
 import hashlib
@@ -48,12 +56,13 @@ def first_tier_city_list():
     perm2 = Permission(Need('need2', 'my_value'))
 
     return render_template('housing_price/city_dict.html',
-                           title='选择城市',
+                           title='Choose City',
                            permission1=perm1.can(),
                            permission2=perm2.can(),
                            user=session['username'],
                            city_dict=city_dict
                            )
+
 
 @app.route('/housing_price', methods=['POST', 'GET'])
 @flask_login.login_required
@@ -104,3 +113,82 @@ def housing_price():
                                date_end=date_end
                                )
     return redirect(url_for('housing_price', _external=True, _scheme='http'))
+
+###########################################################################
+# minneapolis crime prediction
+###########################################################################
+from flask_googlemaps import GoogleMaps
+from flask_googlemaps import Map, icons
+
+
+# you can set key as config
+app.config['GOOGLEMAPS_KEY'] = "AIzaSyAZzeHhs-8JZ7i18MjFuM35dJHq70n3Hx4"
+
+# you can also pass key here
+GoogleMaps(app, key="AIzaSyAZzeHhs-8JZ7i18MjFuM35dJHq70n3Hx4")
+
+@app.route('/minneapolis_simple_analysis',methods=['POST','GET'])
+@flask_login.login_required
+def minneapolis_simple_analysis():
+    '''
+    choose housing price city
+    :return:
+    '''
+    # permission manage
+    perm1 = Permission(Need('need1', 'my_value'))
+    perm2 = Permission(Need('need2', 'my_value'))
+
+    # get the parameter from the form
+    lat = request.args.get('lati',44.977276 , type=float)
+    lon = request.args.get('long', -93.232266, type=float)
+    time = request.args.get('time', "12:00", type=str)
+    # print lat
+    # print lon
+    # print time
+
+    maker_box = "Latitude:{0}<br>Longtitude:{1}<br>Time:{2}<br>Predictions:{3} for {4}, {5} fro {6}".format(lat,lon,time,
+                                                        0.99,"theft",0.45,"v")
+    sndmap = Map(
+        identifier="sndmap",
+        varname="sndmap",
+        zoom=11,
+        lat=44.977276,
+        lng=-93.232266,
+        style="height:500px;width:1000px;margin:0;",
+        markers={
+            # icons.dots.green: [(37.4419, -122.1419), (37.4500, -122.1350)],
+            icons.dots.blue: [(lat, lon, maker_box)]
+        }
+    )
+
+
+    return render_template(
+            'minneapolis_crime_prediction/data_analysis_crimes.html',
+            permission1=perm1.can(),
+            permission2=perm2.can(),
+            user=session['username'],
+            sndmap=sndmap,
+    )
+
+
+###########################################################################
+# us airline delay prediction
+###########################################################################
+@app.route('/us_airline_delay_prediction')
+@flask_login.login_required
+def us_airline_delay_prediction():
+    '''
+    choose
+    :return:
+    '''
+    # permission management
+    # 权限管理
+
+    perm1 = Permission(Need('need1', 'my_value'))
+    perm2 = Permission(Need('need2', 'my_value'))
+
+    return render_template('us_airline_delay_prediction/data_analysis.html',
+                           permission1=perm1.can(),
+                           permission2=perm2.can(),
+                           user=session['username'],
+                           )
