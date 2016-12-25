@@ -147,7 +147,7 @@ def minneapolis_simple_analysis():
     time = request.args.get('time', "12:00", type=str)
 
     global crime_model
-    top_2_result = crime_model.predict_from_lr(lat,lon,date,time,2)
+    top_2_result = crime_model.predict_from_rf(lat,lon,date,time,2)
 
     maker_box = "Latitude:{0}<br>Longtitude:{1}<br>Time:{2}<br>Predictions: <ol>{3} for {4}</ol><ol>{5} for {6}</ol>".format(lat,lon,time,
                 top_2_result[0][0],top_2_result[0][1],top_2_result[1][0],top_2_result[1][1])

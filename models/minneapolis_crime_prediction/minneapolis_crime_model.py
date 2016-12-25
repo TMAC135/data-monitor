@@ -14,10 +14,10 @@ class MinneapolisCrimePrediction(object):
 
     def __init__(self):
         # load the scaler and lr_model from the pickle object
-        with open(PROJECT_DIR + '/models/minneapolis_crime_prediction/crime_scaler_lr.pkl',
+        with open(PROJECT_DIR + '/models/minneapolis_crime_prediction/crime_scaler_rf.pkl',
                   'rb') as input:
             self.scaler = pickle.load(input)
-            self.lr_model = pickle.load(input)
+            self.rf_model = pickle.load(input)
 
     def predict_from_lr(self,lat,lon,date,time,k):
         '''
@@ -49,6 +49,41 @@ class MinneapolisCrimePrediction(object):
 
         features_normed = self.scaler.fit_transform(np.array(features_unnormed))
         predict_proba_list = self.lr_model.predict_proba(features_normed)[0]
+
+        # form the result, choose the top two result and corresponding probability
+        return self.form_result_from_proba(predict_proba_list,k)
+
+
+    def predict_from_rf(self,lat,lon,date,time,k):
+        '''
+        :param lat: latitude
+        :param lon: longitude
+        :param date: the date,"2016-12-10" the default value is the current date
+        :param time: time, "13:00", the default value is current time
+        :param k: top k result we want to return
+        return top k predictions from logitic regression and corresponding probabilities.
+
+        Notice:
+            The features are [lat,long,one-hot-hour-feature,one-hot-day-feature,one-hot-month-feature]
+        '''
+        if not date:
+            date_obj = ar.now().date()
+        else:
+            date_obj = ar.get(date).date()
+        if not time:
+            time = str(ar.now().datetime)[11:16]
+
+        # get the one hot for time and date
+        one_hot_time = self.get_one_hot_time(time)
+        one_hot_month_day = self.get_one_hot_month_day(date_obj)
+
+        #form the features and normlize
+        features_unnormed = [lat,lon]
+        features_unnormed.extend(one_hot_time)
+        features_unnormed.extend(one_hot_month_day)
+
+        features_normed = self.scaler.transform(np.array(features_unnormed))
+        predict_proba_list = self.rf_model.predict_proba(features_normed)[0]
 
         # form the result, choose the top two result and corresponding probability
         return self.form_result_from_proba(predict_proba_list,k)
